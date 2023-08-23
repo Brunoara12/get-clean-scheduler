@@ -1,3 +1,4 @@
+import { Button } from "@mui/base";
 import { Outlet, NavLink, useLoaderData, Form, useNavigation, useSubmit } from "react-router-dom";
 
 
@@ -15,6 +16,9 @@ export default function Root() {
             <div id="sidebar">
                 <h1>React Router Contacts</h1>
                 <div>
+                    <NavLink to="/">
+                        <Button>HOME</Button>
+                    </NavLink>
                     <Form id="search-form" role="search">
                         <input
                             id="q"
@@ -51,7 +55,7 @@ export default function Root() {
                             {contacts.map((contact) => (
                                 <li key={contact.id}>
                                     <NavLink
-                                        to={`contacts/${contact.id}`}
+                                        to={`${contact.id}`}
                                         className={
                                             ({ isActive, isPending }) =>
                                                 isActive ? "active" :
