@@ -16,7 +16,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
             onClick={() => setSelected(title)}
             icon={icon}
             component={<NavLink to={to} />}>
-            <body1>{title}</body1>
+            <p>{title}</p>
         </MenuItem>
     )
 }
@@ -99,7 +99,7 @@ export default function RootSidebar() {
 
     const listItems = NavMenuItems.map(item => {
         return (item.group ?
-            <h6 className="text-grey-300 mt-4 mb-1 ml-5">{item.group}</h6> :
+            <h6 key={item.group} className="text-grey-300 mt-4 mb-1 ml-5">{item.group}</h6> :
             <Item
                 key={item.title}
                 title={item.title}

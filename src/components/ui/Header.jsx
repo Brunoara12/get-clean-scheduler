@@ -5,7 +5,7 @@ const Header = ({ title, subtitle }) => {
 
 
     return (
-        <div className="mb-7">
+        <div className="mb-7 flex flex-col w-auto">
             <h2 className="text-grey-100 font-bold mb-1 text">
                 {title}
             </h2>

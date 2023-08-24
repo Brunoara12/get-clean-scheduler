@@ -37,11 +37,12 @@ function App() {
           action={contactAction}>
           <Route errorElement={<ErrorPage />}>
             <Route index element={<Dashboard />} />
+            <Route path='/teams/' element={<Team />}>
+
+            </Route>
           </Route>
         </Route>
-        <Route path='/team/' element={<Team />}>
 
-        </Route>
         <Route path='/invoices/' element={<Invoices />}>
 
         </Route>
