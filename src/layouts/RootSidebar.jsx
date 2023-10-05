@@ -110,7 +110,7 @@ export default function RootSidebar() {
     })
     return (
         <>
-            <div className="flex">
+            <div className="flex min-w-0">
                 <Sidebar className="!border-greenAccent-500" collapsed={isCollapsed}>
                     <Menu >
 

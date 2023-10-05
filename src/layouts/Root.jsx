@@ -74,14 +74,14 @@ const Root = () => {
 
 
     return (
-        <div className='flex flex-col w-full bg-defBg dark:bg-dkPrimary-500'>
+        <div className='flex flex-col flex-1 bg-defBg dark:bg-dkPrimary-500 min-w-0'>
             <Topbar />
-            <div className='flex flex-1'>
+            <div className='flex flex-1 min-w-0'>
                 <RootSidebar />
                 <div id="detail"
                     className={
 
-                        "flex flex-1" +
+                        "flex flex-1 m-auto w-auto min-w-0" +
                         (navigation.state === "loading" ? "loading " : "")
                     }>
                     <Outlet />

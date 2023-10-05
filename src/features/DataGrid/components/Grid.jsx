@@ -38,12 +38,27 @@ function Grid({ title, subtitle }) {
     ]
 
     return (
-        <div className='m-5 flex flex-col w-[100%]'>
+        <div className='m-5 flex flex-col flex-1 min-w-0'>
             <Header title={title} subtitle={subtitle} />
             <div className='mt-10 h-[75vh] w-auto'>
                 <DataGrid
                     rows={mockDataTeam}
-                    columns={columns} />
+                    columns={columns}
+                    sx={{
+                        "& .name-column--cell": {
+                            color: '#2e7c67',
+                          },
+                          "& .MuiDataGrid-virtualScroller": {
+                            backgroundColor: colors.primary[400],
+                          },
+                          "& .MuiDataGrid-footerContainer": {
+                            borderTop: "none",
+                            backgroundColor: colors.blueAccent[700],
+                          },
+                          "& .MuiCheckbox-root": {
+                            color: `${colors.greenAccent[200]} !important`,
+                          },
+                    }} />
             </div>
         </div>
     )
