@@ -26,6 +26,50 @@
   h6 {
     @apply text-h6;
   }
+
+  :root {
+    --color-text-base: #f8f8f8;
+    --color-text-muted: #a3a3a3;
+    --color-text-green: #3da58a;
+    --color-text-blue: #6870fa;
+    --color-text-red: #db4f4a;
+
+    --color-button-gr: #3da58a;
+    --color-button-gr-hover: #94e2cd;
+
+    --color-button-bl: #535ac8;
+    --color-button-bl-hover: #a4a9fc;
+
+    --color-button-rd: #af3f3b;
+    --color-button-rd-hover: #e99592;
+
+    --color-button-accent: #fff;
+
+    --color-background: #141b2d;
+    --color-background-accent: #1f2a40;
+  }
+
+  .theme-light {
+    --color-text-base: #040509;
+    --color-text-muted: #858585;
+    --color-text-green: #3da58a;
+    --color-text-blue: #6870fa;
+    --color-text-red: #db4f4a;
+
+    --color-button-gr: #3da58a;
+    --color-button-gr-hover: #94e2cd;
+
+    --color-button-bl: #535ac8;
+    --color-button-bl-hover: #a4a9fc;
+
+    --color-button-rd: #af3f3b;
+    --color-button-rd-hover: #e99592;
+
+    --color-button-accent: #040509;
+
+    --color-background: #fcfcfc;
+    --color-background-accent: #e9e9e9;
+  }
 }
 
 html {
@@ -139,10 +183,6 @@ form[action$="destroy"] button {
   min-width: 0;
 }
 
-.ps-sidebar-container {
-  background-color: #1F2A40 !important;
-}
-
 .ps-menu-button:hover {
   background-color: inherit !important;
 
@@ -150,10 +190,6 @@ form[action$="destroy"] button {
     color: #868dfb !important;
   }
 
-}
-
-.ps-active {
-  color: #6870fa !important;
 }
 
 #sidebar {

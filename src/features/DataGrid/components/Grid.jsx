@@ -1,4 +1,3 @@
-import React from 'react'
 import { DataGrid } from "@mui/x-data-grid"
 import PropTypes from 'prop-types'
 
@@ -6,25 +5,26 @@ import Header from '../../../components/ui/Header'
 
 import { mockDataTeam } from '../../../data/mockData'
 import { AdminPanelSettingsOutlined, LockOpenOutlined, SecurityOutlined } from '@mui/icons-material'
+import { Box } from "@mui/material"
 
 
 
 function Grid({ title, subtitle }) {
 
-
     const accessRender = ({ row: { access } }) => {
         return (
             <div
-                className={'flex justify-center w-[60%] ml-auto mr-auto p-1 rounded' +
-                    access === "admin" ? " bg-greenAccent-600" : " bg-greenAccent-700"}>
+                className={'flex justify-center w-[60%] ml-auto mr-auto p-1 rounded ' +
+                    (access === "admin" ? "bg-skin-buttRed" : "bg-skin-buttGreen")
+                }>
                 {access === "admin" && <AdminPanelSettingsOutlined />}
                 {access === "manager" && <SecurityOutlined />}
                 {access === "user" && <LockOpenOutlined />}
-                <p className='text-grey-100 ml-1'>
+                <p className='text-skin-base ml-1'>
                     {access}
                 </p>
 
-            </div>
+            </div >
         )
     }
 
@@ -40,26 +40,37 @@ function Grid({ title, subtitle }) {
     return (
         <div className='m-5 flex flex-col flex-1 min-w-0'>
             <Header title={title} subtitle={subtitle} />
-            <div className='mt-10 h-[75vh] w-auto'>
+            <Box className='mt-10 h-[75vh] w-auto'
+                sx={{
+                    "& .MuiDataGrid-root": {
+                        border: 'none',
+                    },
+                    "& .MuiDataGrid-cell": {
+                        color: 'var(--color-text-base)',
+                        border: 'none',
+                    },
+                    "& .name-column--cell": {
+                        color: 'var(--color-text-green)',
+                    },
+                    "& .MuiDataGrid-virtualScroller": {
+                        backgroundColor: 'var(--color-background-accent)',
+                    },
+                    "& .MuiDataGrid-footerContainer": {
+                        borderTop: "none",
+                        backgroundColor: 'var(--color-button-bl)',
+                    },
+                    "& .MuiDataGrid-columnHeaders": {
+                        borderBottom: "none",
+                        backgroundColor: 'var(--color-button-bl)',
+                    },
+                    "& .MuiCheckbox-root": {
+                        color: `var(--color-button-rd) !important`,
+                    },
+                }}>
                 <DataGrid
                     rows={mockDataTeam}
-                    columns={columns}
-                    sx={{
-                        "& .name-column--cell": {
-                            color: '#2e7c67',
-                          },
-                          "& .MuiDataGrid-virtualScroller": {
-                            backgroundColor: colors.primary[400],
-                          },
-                          "& .MuiDataGrid-footerContainer": {
-                            borderTop: "none",
-                            backgroundColor: colors.blueAccent[700],
-                          },
-                          "& .MuiCheckbox-root": {
-                            color: `${colors.greenAccent[200]} !important`,
-                          },
-                    }} />
-            </div>
+                    columns={columns} />
+            </Box>
         </div>
     )
 }

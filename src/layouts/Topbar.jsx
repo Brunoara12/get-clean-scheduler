@@ -61,7 +61,7 @@ function Topbar() {
 
     return (
         <div className="flex justify-between p-2">
-            <div className="flex bg-primary-100 dark:bg-dkPrimary-500 rounded bg-inherit outline-none">
+            <div className="flex bg-skin-bg rounded bg-inherit outline-none">
                 <CustomInput
                     id="outlined-adornment-password"
                     type={values.showPassword ? 'text' : 'password'}

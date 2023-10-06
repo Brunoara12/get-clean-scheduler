@@ -2,11 +2,15 @@ import { useEffect } from 'react'
 import RootSidebar from './RootSidebar'
 import Topbar from './Topbar'
 import { Outlet, useNavigation } from 'react-router-dom'
+import { ColorThemeContext, useTheme } from '../theme'
+
+import { ThemeProvider } from '@mui/material'
 
 const Root = () => {
 
     const navigation = useNavigation();
 
+    // FIXME : Plan Dark/Light Mode toggle with new css system 
     const toggleTheme = () => {
         var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
@@ -72,22 +76,27 @@ const Root = () => {
         }
     }, [])
 
+    const [theme, colorTheme] = useTheme();
+
 
     return (
-        <div className='flex flex-col flex-1 bg-defBg dark:bg-dkPrimary-500 min-w-0'>
-            <Topbar />
-            <div className='flex flex-1 min-w-0'>
-                <RootSidebar />
-                <div id="detail"
-                    className={
-
-                        "flex flex-1 m-auto w-auto min-w-0" +
-                        (navigation.state === "loading" ? "loading " : "")
-                    }>
-                    <Outlet />
+        <ColorThemeContext.Provider value={colorTheme}>
+            <ThemeProvider theme={theme}>
+                <div className={(theme.palette.mode === 'dark' ? 'theme-dark ' : 'theme-light ') + 'flex flex-col flex-1 bg-skin-bg min-w-0'}>
+                    <Topbar />
+                    <div className='flex flex-1 min-w-0'>
+                        <RootSidebar />
+                        <div id="detail"
+                            className={
+                                "flex flex-1 m-auto w-auto min-w-0" +
+                                (navigation.state === "loading" ? "loading " : "")
+                            }>
+                            <Outlet />
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </ThemeProvider>
+        </ColorThemeContext.Provider>
     )
 }
 
