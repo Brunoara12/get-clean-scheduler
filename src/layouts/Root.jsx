@@ -9,8 +9,8 @@ import { ThemeProvider } from '@mui/material'
 const Root = () => {
 
     const navigation = useNavigation();
+    const [theme, colorTheme] = useTheme();
 
-    // FIXME : Plan Dark/Light Mode toggle with new css system 
     const toggleTheme = () => {
         var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
@@ -20,28 +20,7 @@ const Root = () => {
             themeToggleDarkIcon.classList.toggle('hidden');
             themeToggleLightIcon.classList.toggle('hidden');
 
-            console.log("current theme: " + localStorage.getItem('theme'))
-
-            // if set via local storage previously
-            if (localStorage.getItem('theme')) {
-                if (localStorage.getItem('theme') === 'light') {
-                    document.documentElement.classList.add('dark');
-                    localStorage.setItem('theme', 'dark');
-                } else {
-                    document.documentElement.classList.remove('dark');
-                    localStorage.setItem('theme', 'light');
-                }
-
-                // if NOT set via local storage previously
-            } else {
-                if (document.documentElement.classList.contains('dark')) {
-                    document.documentElement.classList.remove('dark');
-                    localStorage.setItem('theme', 'light');
-                } else {
-                    document.documentElement.classList.add('dark');
-                    localStorage.setItem('theme', 'dark');
-                }
-            }
+            colorTheme.toggleColorTheme()
         }
     }
 
@@ -54,29 +33,28 @@ const Root = () => {
 
         if (themeToggleDarkIcon && themeToggleLightIcon) {
             // Change the icons inside the button based on previous settings
-            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            if (theme.palette.mode === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                 themeToggleLightIcon.classList.remove('hidden');
             } else {
                 themeToggleDarkIcon.classList.remove('hidden');
             }
         }
 
-
         var themeToggleBtn = document.getElementById('theme-toggle');
 
         if (themeToggleBtn) {
             themeToggleBtn.addEventListener('click', toggleTheme);
-            console.log("Added EventListener")
-
+            //console.log("Added EventListener")
             return () => {
-                console.log("Removed EventListener")
+                //console.log("Removed EventListener")
                 themeToggleBtn.removeEventListener('click', toggleTheme);
-
             }
         }
-    }, [])
 
-    const [theme, colorTheme] = useTheme();
+
+    }, [theme.palette.mode])
+
+
 
 
     return (

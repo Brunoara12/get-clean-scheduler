@@ -1,4 +1,4 @@
-import { NotificationsOutlined, SettingsOutlined, PersonOutlined, Search } from '@mui/icons-material'
+import { NotificationsOutlined, SettingsOutlined, PersonOutlined, Search, LightMode, DarkMode } from '@mui/icons-material'
 import { Input, Button, inputClasses } from '@mui/base'
 import PropTypes from 'prop-types';
 import { styled } from '@mui/system';
@@ -83,14 +83,22 @@ function Topbar() {
             </div>
 
             <div className="flex">
-                <IconButton>
-                    <NotificationsOutlined />
+                <IconButton id="theme-toggle" type="button" className="text-skin-base hover:text-skin-blue focus:outline-none rounded-lg text-sm p-1">
+                    <LightMode id="theme-toggle-light-icon" sx={
+                        {}
+                    } className='hidden w-5 h-5' />
+                    <DarkMode id="theme-toggle-dark-icon" sx={
+                        {}
+                    } className='hidden w-5 h-5' />
                 </IconButton>
-                <IconButton>
-                    <SettingsOutlined />
+                <IconButton type="button" className="text-skin-base hover:text-skin-blue focus:outline-none rounded-lg text-sm p-1">
+                    <NotificationsOutlined className='w-5 h-5' />
+                </IconButton>
+                <IconButton type="button" className="text-skin-base hover:text-skin-blue focus:outline-none rounded-lg text-sm p-1">
+                    <SettingsOutlined className='w-5 h-5' />
                 </IconButton >
-                <IconButton>
-                    <PersonOutlined />
+                <IconButton type="button" className="text-skin-base hover:text-skin-blue focus:outline-none rounded-lg text-sm p-1">
+                    <PersonOutlined className='w-5 h-5' />
                 </IconButton>
             </div>
         </div>
