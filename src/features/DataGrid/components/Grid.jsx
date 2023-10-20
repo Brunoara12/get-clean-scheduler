@@ -1,41 +1,13 @@
-import { DataGrid } from "@mui/x-data-grid"
+import { DataGrid, GridToolbar } from "@mui/x-data-grid"
 import PropTypes from 'prop-types'
 
 import Header from '../../../components/ui/Header'
 
-import { mockDataTeam } from '../../../data/mockData'
-import { AdminPanelSettingsOutlined, LockOpenOutlined, SecurityOutlined } from '@mui/icons-material'
 import { Box } from "@mui/material"
 
 
 
-function Grid({ title, subtitle }) {
-
-    const accessRender = ({ row: { access } }) => {
-        return (
-            <div
-                className={'flex justify-center w-[60%] ml-auto mr-auto p-1 rounded ' +
-                    (access === "admin" ? "bg-skin-buttRed" : "bg-skin-buttGreen")
-                }>
-                {access === "admin" && <AdminPanelSettingsOutlined />}
-                {access === "manager" && <SecurityOutlined />}
-                {access === "user" && <LockOpenOutlined />}
-                <p className='text-skin-base ml-1'>
-                    {access}
-                </p>
-
-            </div >
-        )
-    }
-
-    const columns = [
-        { field: "id", headerName: "ID", flex: 1 },
-        { field: "name", headerName: "Name", flex: 1, cellClassName: "name-column--cell" },
-        { field: "age", headerName: "Age", type: "number", headerAlign: "left", align: "left", flex: 1 },
-        { field: "phone", headerName: "Phone Number", flex: 1 },
-        { field: "email", headerName: "Email", flex: 1 },
-        { field: "access", headerName: "Access Level", flex: 1, renderCell: accessRender },
-    ]
+function Grid({ title, subtitle, columns, rowData, toolBar = false, checkBox = false }) {
 
     return (
         <div className='m-5 flex flex-col flex-1 min-w-0'>
@@ -50,7 +22,7 @@ function Grid({ title, subtitle }) {
                         border: 'none',
                     },
                     "& .name-column--cell": {
-                        color: 'var(--color-text-green)',
+                        color: 'var(--color-text-blue)',
                     },
                     "& .MuiDataGrid-virtualScroller": {
                         backgroundColor: 'var(--color-background-accent)',
@@ -64,12 +36,19 @@ function Grid({ title, subtitle }) {
                         backgroundColor: 'var(--color-button-bl)',
                     },
                     "& .MuiCheckbox-root": {
-                        color: `var(--color-button-rd) !important`,
+                        color: `var(--color-button-bl) !important`,
+                    },
+                    "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+                        color: 'var(--color-text-muted)',
                     },
                 }}>
                 <DataGrid
-                    rows={mockDataTeam}
-                    columns={columns} />
+                    rows={rowData}
+                    columns={columns}
+                    slots={{
+                        toolbar: toolBar ? GridToolbar : ''
+                    }}
+                    checkboxSelection={checkBox} />
             </Box>
         </div>
     )
@@ -78,6 +57,10 @@ function Grid({ title, subtitle }) {
 Grid.propTypes = {
     title: PropTypes.string,
     subtitle: PropTypes.string,
+    columns: PropTypes.object,
+    rowData: PropTypes.object,
+    toolBar: PropTypes.bool,
+    checkBox: PropTypes.bool
 }
 
 export default Grid;

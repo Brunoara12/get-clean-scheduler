@@ -37,22 +37,19 @@ function App() {
           action={contactAction}>
           <Route errorElement={<ErrorPage />}>
             <Route index element={<Dashboard />} />
-            <Route path='/teams/' element={<Team />}>
-
-            </Route>
+            <Route path='/teams/' element={<Team />} />
+            <Route path='/contacts/' element={<Contact />} />
+            <Route path='/invoices/' element={<Invoices />} />
           </Route>
         </Route>
 
-        <Route path='/invoices/' element={<Invoices />}>
-
-        </Route>
         <Route path='/JobRoutes/' element={<JobRoutes />}>
 
         </Route>
         <Route path='/calendar/' element={<Calendar />}>
 
         </Route>
-        <Route
+        {/* <Route
           path="/contacts/"
           element={<ContactsSidebar />}
           loader={searchContactLoader}
@@ -73,7 +70,7 @@ function App() {
               path=":contactId/destroy"
               action={deleteContactAction} />
           </Route>
-        </Route>
+        </Route> */}
       </>
     ))
 

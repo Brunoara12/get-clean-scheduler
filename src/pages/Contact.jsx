@@ -1,97 +1,30 @@
-import { Form, useFetcher, useLoaderData } from "react-router-dom";
-import PropTypes from 'prop-types';
+import { Grid } from "../features/DataGrid/index"
+import { mockDataContacts } from '../data/mockData'
 
 function Contact() {
 
-    const { contact } = useLoaderData()
+    const columns = [
+        { field: "id", headerName: "ID", flex: 0.5 },
+        { field: "registrarId", headerName: "Registrar ID" },
+        { field: "name", headerName: "Name", flex: 1, cellClassName: "name-column--cell" },
+        { field: "age", headerName: "Age", type: "number", headerAlign: "left", align: "left", flex: 1 },
+        { field: "phone", headerName: "Phone Number", flex: 1 },
+        { field: "email", headerName: "Email", flex: 1 },
+        { field: "address", headerName: "Address", flex: 1 },
+        { field: "city", headerName: "City", flex: 1 },
+        { field: "zipCode", headerName: "ZipCode", flex: 1 },
+    ]
 
     return (
-        <div id="contact">
-            <div>
-                <img
-                    key={contact.avatar}
-                    src={contact.avatar || null}
-                />
-            </div>
-
-            <div>
-                <h1>
-                    {contact.first || contact.last ? (
-                        <>
-                            {contact.first} {contact.last}
-                        </>
-                    ) : (
-                        <i>No Name</i>
-                    )}{" "}
-                    <Favorite contact={contact} />
-                </h1>
-
-                {contact.twitter && (
-                    <p>
-                        <a
-                            rel="noopener"
-                            href={`https://instagram.com/${contact.twitter}`}
-                        >
-                            {contact.twitter}
-                        </a>
-                    </p>
-                )}
-
-                {contact.notes && <p>{contact.notes}</p>}
-
-                <div>
-                    <Form action="edit">
-                        <button type="submit">Edit</button>
-                    </Form>
-                    <Form
-                        method="post"
-                        action="destroy"
-                        onSubmit={(event) => {
-                            if (
-                                !confirm(
-                                    "Please confirm you want to delete this record."
-                                )
-                            ) {
-                                event.preventDefault();
-                            }
-                        }}
-                    >
-                        <button type="submit">Delete</button>
-                    </Form>
-                </div>
-            </div>
+        <div className='flex flex-1 m-auto min-w-0'>
+            <Grid
+                title="Contact"
+                subtitle="Managing the Contacts"
+                columns={columns}
+                rowData={mockDataContacts}
+                toolBar />
         </div>
-    );
-}
-
-
-function Favorite({ contact }) {
-    // yes, this is a `let` for later
-    let favorite = contact.favorite;
-    const fetcher = useFetcher();
-
-    if (fetcher.formData) {
-        favorite = fetcher.formData.get("favorite") === "true"
-    }
-
-    Favorite.propTypes = {
-        contact: PropTypes.object
-    }
-    return (
-        <fetcher.Form method="post">
-            <button
-                name="favorite"
-                value={favorite ? "false" : "true"}
-                aria-label={
-                    favorite
-                        ? "Remove from favorites"
-                        : "Add to favorites"
-                }
-            >
-                {favorite ? "★" : "☆"}
-            </button>
-        </fetcher.Form>
-    );
+    )
 }
 
 export default Contact;
