@@ -10,6 +10,8 @@ import Team from './pages/Team'
 import Invoices from './pages/Invoices'
 import JobRoutes from './pages/JobRoutes'
 import Calendar from './pages/Calendar'
+import { Form } from "./features/Form/index"
+
 
 import { action as contactAction, editContactFavoriteAction } from './services/ContactService'
 import { contactLoader } from './services/ContactService'
@@ -40,6 +42,7 @@ function App() {
             <Route path='/teams/' element={<Team />} />
             <Route path='/contacts/' element={<Contact />} />
             <Route path='/invoices/' element={<Invoices />} />
+            <Route path='/form/' element={<Form />} />
           </Route>
         </Route>
 

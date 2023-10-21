@@ -62,11 +62,11 @@ const Root = () => {
             <ThemeProvider theme={theme}>
                 <div className={(theme.palette.mode === 'dark' ? 'theme-dark ' : 'theme-light ') + 'flex flex-col flex-1 bg-skin-bg min-w-0'}>
                     <Topbar />
-                    <div className='flex flex-1 min-w-0'>
+                    <div className='flex flex-1 min-w-0 '>
                         <RootSidebar />
                         <div id="detail"
                             className={
-                                "flex flex-1 m-auto w-auto min-w-0" +
+                                "flex flex-1 w-auto min-w-0" +
                                 (navigation.state === "loading" ? "loading " : "")
                             }>
                             <Outlet />
