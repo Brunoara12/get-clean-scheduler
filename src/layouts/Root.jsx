@@ -66,7 +66,7 @@ const Root = () => {
                         <RootSidebar />
                         <div id="detail"
                             className={
-                                "flex flex-1 m-auto w-auto min-w-0" +
+                                "flex flex-1 w-auto min-w-0" +
                                 (navigation.state === "loading" ? "loading " : "")
                             }>
                             <Outlet />

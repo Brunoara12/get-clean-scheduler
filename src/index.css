@@ -29,6 +29,7 @@
 
   :root {
     --color-text-base: #f8f8f8;
+    --color-text-accent: #141b2d;
     --color-text-muted: #a3a3a3;
     --color-text-green: #3da58a;
     --color-text-blue: #6870fa;
@@ -51,6 +52,7 @@
 
   .theme-light {
     --color-text-base: #040509;
+    --color-text-accent: #fcfcfc;
     --color-text-muted: #858585;
     --color-text-green: #3da58a;
     --color-text-blue: #6870fa;
@@ -100,7 +102,6 @@ body {
   height: 100%;
   margin: 0;
   line-height: 1.5;
-  color: #121212;
 }
 
 textarea,
@@ -336,11 +337,7 @@ i {
   color: hsl(224, 98%, 58%);
 }
 
-#detail {
-  flex: 1;
-  padding: 2rem 4rem;
-  width: 100%;
-}
+
 
 #detail.loading {
   opacity: 0.25;

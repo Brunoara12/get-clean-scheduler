@@ -9,7 +9,7 @@ import Contact from './pages/Contact'
 import Team from './pages/Team'
 import Invoices from './pages/Invoices'
 import JobRoutes from './pages/JobRoutes'
-import Calendar from './pages/Calendar'
+import CalendarPage from './pages/CalendarPage'
 
 import { action as contactAction, editContactFavoriteAction } from './services/ContactService'
 import { contactLoader } from './services/ContactService'
@@ -40,15 +40,16 @@ function App() {
             <Route path='/teams/' element={<Team />} />
             <Route path='/contacts/' element={<Contact />} />
             <Route path='/invoices/' element={<Invoices />} />
+            <Route path='/calendar/' element={<CalendarPage />} />
+
           </Route>
         </Route>
 
         <Route path='/JobRoutes/' element={<JobRoutes />}>
 
         </Route>
-        <Route path='/calendar/' element={<Calendar />}>
 
-        </Route>
+        {/* FIXME : Clean up Comments*/}
         {/* <Route
           path="/contacts/"
           element={<ContactsSidebar />}
