@@ -10,6 +10,9 @@ import Team from './pages/Team'
 import Invoices from './pages/Invoices'
 import JobRoutes from './pages/JobRoutes'
 import Calendar from './pages/Calendar'
+import BarChartPage from './pages/BarChartPage'
+import PieChartPage from './pages/PieChartPage'
+import LineChartPage from './pages/LineChartPage'
 
 import { action as contactAction, editContactFavoriteAction } from './services/ContactService'
 import { contactLoader } from './services/ContactService'
@@ -40,6 +43,9 @@ function App() {
             <Route path='/teams/' element={<Team />} />
             <Route path='/contacts/' element={<Contact />} />
             <Route path='/invoices/' element={<Invoices />} />
+            <Route path='/bar/' element={<BarChartPage />} />
+            <Route path='/pie/' element={<PieChartPage />} />
+            <Route path='/line/' element={<LineChartPage />} />
           </Route>
         </Route>
 
