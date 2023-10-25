@@ -11,7 +11,7 @@ const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
                 axis: {
                     domain: {
                         line: {
-                            stroke: "var(--color-background-accent)"
+                            stroke: isDashboard ? "var(--color-background)" : "var(--color-background-accent)"
                         }
                     },
                     legend: {

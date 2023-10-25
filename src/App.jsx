@@ -13,6 +13,7 @@ import Calendar from './pages/Calendar'
 import BarChartPage from './pages/BarChartPage'
 import PieChartPage from './pages/PieChartPage'
 import LineChartPage from './pages/LineChartPage'
+import DashboardPage from './pages/DashboardPage'
 
 import { action as contactAction, editContactFavoriteAction } from './services/ContactService'
 import { contactLoader } from './services/ContactService'
@@ -23,7 +24,6 @@ import Root from './layouts/Root'
 
 import EditContact from './pages/EditContact'
 import Index from './pages/Index'
-import Dashboard from './pages/Dashboard'
 
 function App() {
 
@@ -39,7 +39,7 @@ function App() {
           loader={searchContactLoader}
           action={contactAction}>
           <Route errorElement={<ErrorPage />}>
-            <Route index element={<Dashboard />} />
+            <Route index element={<DashboardPage />} />
             <Route path='/teams/' element={<Team />} />
             <Route path='/contacts/' element={<Contact />} />
             <Route path='/invoices/' element={<Invoices />} />
