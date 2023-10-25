@@ -16,6 +16,7 @@ import LineChartPage from './pages/LineChartPage'
 import DashboardPage from './pages/DashboardPage'
 import { Form } from "./features/Form/index"
 
+import CalendarPage from './pages/CalendarPage'
 
 import { action as contactAction, editContactFavoriteAction } from './services/ContactService'
 import { contactLoader } from './services/ContactService'
@@ -49,15 +50,16 @@ function App() {
             <Route path='/pie/' element={<PieChartPage />} />
             <Route path='/line/' element={<LineChartPage />} />
             <Route path='/form/' element={<Form />} />
+            <Route path='/calendar/' element={<CalendarPage />} />
+
           </Route>
         </Route>
 
         <Route path='/JobRoutes/' element={<JobRoutes />}>
 
         </Route>
-        <Route path='/calendar/' element={<Calendar />}>
 
-        </Route>
+        {/* FIXME : Clean up Comments*/}
         {/* <Route
           path="/contacts/"
           element={<ContactsSidebar />}
