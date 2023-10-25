@@ -16,7 +16,7 @@ function Contact() {
     ]
 
     return (
-        <div className='flex flex-1 m-auto min-w-0'>
+        <div className='flex flex-1 min-w-0'>
             <Grid
                 title="Contact"
                 subtitle="Managing the Contacts"

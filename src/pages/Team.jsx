@@ -31,7 +31,7 @@ const Team = () => {
     ]
 
     return (
-        <div className='flex flex-1 m-auto min-w-0'>
+        <div className='flex flex-1  min-w-0'>
             <Grid
                 title="Team"
                 subtitle="Managing the Team Members"

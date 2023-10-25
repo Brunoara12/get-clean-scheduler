@@ -14,6 +14,8 @@ import BarChartPage from './pages/BarChartPage'
 import PieChartPage from './pages/PieChartPage'
 import LineChartPage from './pages/LineChartPage'
 import DashboardPage from './pages/DashboardPage'
+import { Form } from "./features/Form/index"
+
 
 import { action as contactAction, editContactFavoriteAction } from './services/ContactService'
 import { contactLoader } from './services/ContactService'
@@ -46,6 +48,7 @@ function App() {
             <Route path='/bar/' element={<BarChartPage />} />
             <Route path='/pie/' element={<PieChartPage />} />
             <Route path='/line/' element={<LineChartPage />} />
+            <Route path='/form/' element={<Form />} />
           </Route>
         </Route>
 
