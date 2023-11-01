@@ -9,13 +9,11 @@ import Contact from './pages/Contact'
 import Team from './pages/Team'
 import Invoices from './pages/Invoices'
 import JobRoutes from './pages/JobRoutes'
-import Calendar from './pages/Calendar'
 import BarChartPage from './pages/BarChartPage'
 import PieChartPage from './pages/PieChartPage'
 import LineChartPage from './pages/LineChartPage'
 import DashboardPage from './pages/DashboardPage'
 import { Form } from "./features/Form/index"
-
 import CalendarPage from './pages/CalendarPage'
 
 import { action as contactAction, editContactFavoriteAction } from './services/ContactService'

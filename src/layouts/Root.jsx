@@ -4,7 +4,7 @@ import Topbar from './Topbar'
 import { Outlet, useNavigation } from 'react-router-dom'
 import { ColorThemeContext, useTheme } from '../theme'
 
-import { ThemeProvider } from '@mui/material'
+import { Box, ThemeProvider } from '@mui/material'
 
 const Root = () => {
 
@@ -60,19 +60,19 @@ const Root = () => {
     return (
         <ColorThemeContext.Provider value={colorTheme}>
             <ThemeProvider theme={theme}>
-                <div className={(theme.palette.mode === 'dark' ? 'theme-dark ' : 'theme-light ') + 'flex flex-col flex-1 bg-skin-bg min-w-0'}>
+                <Box className={(theme.palette.mode === 'dark' ? 'theme-dark ' : 'theme-light ') + 'flex flex-col flex-1 bg-skin-bg min-w-0 overflow-auto'}>
                     <Topbar />
-                    <div className='flex flex-1 min-w-0 '>
+                    <Box className='flex flex-1 min-w-0 '>
                         <RootSidebar />
-                        <div id="detail"
+                        <Box id="detail"
                             className={
                                 "flex flex-1 w-auto min-w-0" +
                                 (navigation.state === "loading" ? "loading " : "")
                             }>
                             <Outlet />
-                        </div>
-                    </div>
-                </div>
+                        </Box>
+                    </Box>
+                </Box>
             </ThemeProvider>
         </ColorThemeContext.Provider>
     )
